@@ -22,10 +22,10 @@ References:
 */
 
 var fs = require('fs');
-var program = require('commander');
+var commander = require('commander');
 var cheerio = require('cheerio');
 // rest to download
-var rest = require('restler');
+var restler = require('restler');
 var HTMLFILE_DEFAULT = "index.html";
 var CHECKSFILE_DEFAULT = "checks.json";
 /* this! */
@@ -54,7 +54,7 @@ var loadChecks = function(checksfile) {
 };
 
 var checkHtmlFile = function(htmlfile, checksfile) {
-    $ = cheerioHtmlFile(htmlfile);
+    $ = cheerio.load(htmlfile);
     var checks = loadChecks(checksfile).sort();
     var out = {};
     for(var ii in checks) {
@@ -72,42 +72,43 @@ var clone = function(fn) {
 
 var getChecksResult = function(html, checks)
 {
-  console.log('Checking HTML content against checks.');
+  console.log('Echo0: Checking HTML content against checks.');
   var checkJson = checkHtmlFile(html, checks);
-  console.log('Converting check results from JSON to a string.');
+  console.log('Echo1: Finally Converting check results from JSON to a string.');
   var outJson = JSON.stringify(checkJson, null, 4);
-  console.log('Echoing the results:');
+  console.log('Echo2: Echoing the results:');
   console.log(outJson);
 }
 
-if(require.main == module) {
-    magic
+if (require.main == module) 
+  {
+    commander
         .option('-c, --checks <check_file>', 'Path to checks.json', clone(assertFileExists), CHECKSFILE_DEFAULT)
         .option('-f, --file <html_file>', 'Path to index.html', clone(assertFileExists), HTMLFILE_DEFAULT)
 	.option('-u, --url <url>', 'url to check', clone(assertUrlExists), URL_DEFAULT)
         .parse(process.argv);
 
-if (magic.url)
-{
-  console.log('URL arg exists. Going to read its contents.');
-  restler.get(magic.url).on('complete', function(result)
-  {
-    if (result instanceof Error)
+    if (commander.url)
+    {
+      console.log('URL arg exists. Going to read its contents. so far so good');
+      restler.get(commander.url).on('complete', function(result)
       {
-        console.log('URL fails to load.')
-        process.exit(1);
-      }
+      if (result instanceof Error)
+        {
+          console.log('URL fails to load.')
+          process.exit(1);
+        }
       var htmlContent = result;
-      console.log('Contents read from ' + magic.url);
-      getChecksResult(htmlContent, magic.checks);
+//      console.log('Contents read from ' + commander.url);
+      getChecksResult(htmlContent, commander.checks)
     });
   }
-  else if (magic.file)
+  else if (commander.file)
   {
-    console.log('File arg exists. Going to read its contents.');
-    var htmlContent = fs.readFileSync(magic.file);
-    console.log('File contents read:\n' + htmlContent);
-    getChecksResult(htmlContent, magic.checks);
+      console.log('File arg exists. Going to read its contents.');
+      var htmlContent = fs.readFileSync(commander.file);
+//      console.log('Contents read from:\n' + htmlContent);
+      getChecksResult(htmlContent, commander.checks);
   }
 }
 else {
