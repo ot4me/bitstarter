@@ -24,8 +24,12 @@ References:
 var fs = require('fs');
 var program = require('commander');
 var cheerio = require('cheerio');
+// rest to download
+var rest = require('restler');
 var HTMLFILE_DEFAULT = "index.html";
 var CHECKSFILE_DEFAULT = "checks.json";
+/* this! */
+var URL_DEFAULT = "http://arcane-atoll-2085.herokuapp.com/";
 
 var assertFileExists = function(infile) {
     var instr = infile.toString();
@@ -35,6 +39,11 @@ var assertFileExists = function(infile) {
     }
     return instr;
 };
+
+var assertUrlExists = function(val)
+{
+    return val.toString();
+}
 
 var cheerioHtmlFile = function(htmlfile) {
     return cheerio.load(fs.readFileSync(htmlfile));
@@ -61,15 +70,46 @@ var clone = function(fn) {
     return fn.bind({});
 };
 
-if(require.main == module) {
-    program
-        .option('-c, --checks <check_file>', 'Path to checks.json', clone(assertFileExists), CHECKSFILE_DEFAULT)
-        .option('-f, --file <html_file>', 'Path to index.html', clone(assertFileExists), HTMLFILE_DEFAULT)
-        .parse(process.argv);
-    var checkJson = checkHtmlFile(program.file, program.checks);
-    var outJson = JSON.stringify(checkJson, null, 4);
-    console.log(outJson);
-} else {
-    exports.checkHtmlFile = checkHtmlFile;
+var getChecksResult = function(html, checks)
+{
+  console.log('Checking HTML content against checks.');
+  var checkJson = checkHtmlFile(html, checks);
+  console.log('Converting check results from JSON to a string.');
+  var outJson = JSON.stringify(checkJson, null, 4);
+  console.log('Echoing the results:');
+  console.log(outJson);
 }
 
+if(require.main == module) {
+    magic
+        .option('-c, --checks <check_file>', 'Path to checks.json', clone(assertFileExists), CHECKSFILE_DEFAULT)
+        .option('-f, --file <html_file>', 'Path to index.html', clone(assertFileExists), HTMLFILE_DEFAULT)
+	.option('-u, --url <url>', 'url to check', clone(assertUrlExists), URL_DEFAULT)
+        .parse(process.argv);
+
+if (magic.url)
+{
+  console.log('URL arg exists. Going to read its contents.');
+  restler.get(magic.url).on('complete', function(result)
+  {
+    if (result instanceof Error)
+      {
+        console.log('URL fails to load.')
+        process.exit(1);
+      }
+      var htmlContent = result;
+      console.log('Contents read from ' + magic.url);
+      getChecksResult(htmlContent, magic.checks);
+    });
+  }
+  else if (magic.file)
+  {
+    console.log('File arg exists. Going to read its contents.');
+    var htmlContent = fs.readFileSync(magic.file);
+    console.log('File contents read:\n' + htmlContent);
+    getChecksResult(htmlContent, magic.checks);
+  }
+}
+else {
+  exports.checkHtmlFile = checkHtmlFile;
+}
