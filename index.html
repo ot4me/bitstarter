@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>UAVs Bitstarter :: v 0.43 ::</title>
+    <title>UAVs Bitstarter :: v 0.44 ::</title>
     <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
     <!--link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"-->
@@ -214,14 +214,11 @@
   		<div class="span5 copy">
   			<p>
   				KEL (known errors list):<br>
- 				<strike>1. bitcoin button works now 'everywhere': <a href="http://ec2-54-213-56-229.us-west-2.compute.amazonaws.com:8080/">staging</a>, <a href="http://stormy-temple-2027.herokuapp.com/">production</a></strike><br> 
- 				2. static donor info. Number of backers is updated manually according to notifications from coinbase, p.ex.<br>
+ 				2. static donor info. Number of backers is updated manually if at all.<br>
 				3. not a real fundraising page. Current site's purpose is to pass the Coursera class titled "Startup engineering".<br>
  				There will be real fundraising going on in October 2013 though.<br>
- 				<strike>4. page ... loads ... really ... slowly ... (needs speedup).</strike><br>
- 				5. difficult to check bitcoin status in one place :( so far got 5 different addresses from coinbase. wonder if they're related (p.ex. like BIP0032 deterministic wallet addresses)<br>
- 				6. looks the same on mobile, just downsized. not really responsive at the moment.<a id="about"></a><br>
- 				<strike>7. google analytics missing</strike>
+ 				5. missing link to bitcoin blockchain 'single address' and an overview of donations.<br>
+ 				6. looks the same on mobile, just downsized. not really responsive at the moment.<a id="about"></a><br> 				
   			</p>
   		</div>
   	</div>
@@ -275,6 +272,7 @@
 		<div class="span10 offset1">
 			<h3>FAQ</h3>
 			<div class="accordion" id="accordion2">
+				<!-- repetitive area start -->
 	    		<div class="accordion-group">
 	    			<div class="accordion-heading">
 						<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
@@ -324,6 +322,36 @@
 						</div>
 					</div>
 				</div>		
+				<div class="accordion-group">
+	    			<div class="accordion-heading">
+						<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFive">
+						List of closed issues
+						</a>
+					</div>
+					<div id="collapseFive" class="accordion-body collapse">
+						<div class="accordion-inner">
+							1. bitcoin button - was in issue with dns forwarding and domain configuration - <strike>1. bitcoin button works now 'everywhere': <a href="http://ec2-54-213-56-229.us-west-2.compute.amazonaws.com:8080/">staging</a>, <a href="http://stormy-temple-2027.herokuapp.com/">production</a></strike><br> 
+			 				4. page ... loads ... - loading less external stuff at page first load <strike>really ... slowly ... (needs speedup).</strike><br>
+			 				7. GA installed <strike>google analytics missing</strike>
+
+						</div>
+					</div>
+				</div>		
+				<div class="accordion-group">
+	    			<div class="accordion-heading">
+						<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFive">
+						List of closed issues
+						</a>
+					</div>
+					<div id="collapseFive" class="accordion-body collapse">
+						<div class="accordion-inner">
+							1. bitcoin button - was in issue with dns forwarding and domain configuration - [<strike>1. bitcoin button does not work at 9to5passion.eu; works now as expected <a href="http://ec2-54-213-56-229.us-west-2.compute.amazonaws.com:8080/">staging</a> and <a href="http://stormy-temple-2027.herokuapp.com/">production</a> respectively</strike>]<br> 
+			 				4. page ... loads ... - loading less external stuff at page first load [<strike>really ... slowly ... (needs speedup).</strike>]<br>
+			 				7. GA installed - not tested yet; credentials to be used to login and use GA [<strike>google analytics missing</strike>]
+						</div>
+					</div>
+				</div>
+				<!-- repetitive area end -->		
 			</div>
 		</div>
 	</div>
