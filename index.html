@@ -2,29 +2,18 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>UAVs Bitstarter :: v 0.56 ::</title>
-	   <!-- todo1 responsive design -->
-	   <!-- todo2 async flow control -->
-    <!-- 053 removed reference to github(username) github.com/.../bitstarter/ around August 2013 -->
-	 <!-- -->
+    <title>UAVs Bitstarter :: v 0.57 ::</title>
+    <!-- todo1 responsive design -->
+    <!-- todo2 async flow control -->
+    <!-- -->
     <!-- if you reed source code, you will find everything in the comments -->    
     <!-- -->
-    <!-- quick & brief thanks to our sponsors and appreciated resources: -->
-    <!-- digmia.com - expert computing -->
-    <!-- nethemba.com - all about security -->
-    <!-- coursera.org stanford.edu wikipedia heroku(app) syn2cat -->
-    <!-- all cool software developers that made this possible -->
     <!-- -->
-    <!-- easter egg:1 the bitcoin address last seen during testing -->
+    <!-- fyi the bitcoin address last seen during testing -->
     <!-- -->
     <!-- http://blockexplorer.com/address/139H9TpgZY9Y199NNaz8ZgZQ9oi7JeCrdr -->
     <!-- https://blockchain.info/address/139H9TpgZY9Y199NNaz8ZgZQ9oi7JeCrdr -->
-    <!-- -->
-    <!-- easter egg:2 about subdomain with hidden content -->
-    <!-- not to forget img hosting at http://quantumkiwi.com via industrial.sk -->
-    <!-- http://about.9to5passion.eu/ probably awaiting old dns entries to expire, might not work all the time -->
-    <!-- http://digmia.com/pages/en.html works (friends of mine) -->
-    <!-- https://www.nethemba.com/ (friends of mine) -->
+    <!-- actually found https://coinbase.com/api/doc -->
     <!-- -->
     <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css">
@@ -147,7 +136,6 @@
   						<li class="active"><a href="#">Home</a></li>
   						<li><a href="#about">About</a></li>
   						<li><a href="#contact">Contact</a></li>
-  						<li><a href="#kel">KEL</a></li>
   						<li><a href="#faq">FAQ</a></li>
   					</ul>
   				</div>
@@ -221,7 +209,6 @@
 				<script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
 				<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-52150be84701e744"></script>
 				<!-- AddThis Button END -->
-				<a id="kel"></a>
   			</div>
   		</div>
   	</div>
@@ -232,13 +219,13 @@
   		</div>
   		<div class="span5 copy">
   			<p>
-  				Known errors list:<br>
-  		<!-- branch candidate / api / async flow / state variable -->
- 				<i>2. static donations status</i> (I've figured out how to enable dynamic bitcoin progressbar)<br>
-				3. not a real fundraising page. Current site's purpose is to pass the Coursera class titled "Startup engineering".<br>
- 				There will be real fundraising going on in October 2013 though.<br>
- 		<!-- :: 048 :: priority 1 - branch candidate -->
- 				6. looks the same on mobile, just downsized. not really responsive at the moment. I must have skipped a step in the development.<a id="about"></a><br> 
+  				Known errors (nearterm todo items):<br>
+  		<!-- branch later to develop api / async flow stuff -->
+ 				<i>2. static donations status</i> (I've figured out how to make tracking bitcoin dynamic)<br>
+				<i>3. not a real fundraising page.</i> Current site's purpose is to pass the Coursera class titled "Startup engineering".<br>
+ 				There might be however real fundraising going on in October 2013.<br>
+ 		<!-- start 057 - priority 1 - responsive design - do this first -->
+ 				6. not really responsive at the moment. I must have skipped a step or two in the process.<a id="about"></a>
   			</p>
   		</div>
   	</div>
@@ -261,7 +248,7 @@
   		<div class="span5 copy">
   			<p>
 				Thanks to:<br> 
-				<a href="http://stanford.edu">Stanford U</a> for <a href="http://www.stanford.edu/class/cs106a/">CS106</a>, <a href="http://robertocsantana.com/?p=32">CS183</a>/<a href="http://startup.stanford.edu/">CS184</a> and <a href="http://itunes.stanford.edu/">more</a>;<br> 
+				<a href="http://stanford.edu">Stanford U</a> for <a href="http://www.stanford.edu/class/cs106a/">CS106a</a>, <a href="http://robertocsantana.com/?p=32">CS183</a>/<a href="http://startup.stanford.edu/">CS184</a> and <a href="http://itunes.stanford.edu/">more</a>;<br> 
 				<a href="https://www.coursera.org/">Coursera.org</a> for courses like this one;<br> 
 				<a href="http://www.strassen.lu/">Strassen comune</a> for the Luxembourg <a href="http://www.hackerspace.lu/">hackerspace</a>;<br> 
 				<a href="http://heroku.com/">heroku</a>, 
@@ -334,18 +321,6 @@
         <!-- aand it's gone 049
 				<div class="accordion-group">
 	    			<div class="accordion-heading">
-						<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFour">
-						How to host on herokuapp with custom domain?
-						</a>
-					</div>
-					<div id="collapseFour" class="accordion-body collapse">
-						<div class="accordion-inner">
-							This one is still work in progress. I did not found the combination of settings to configure my herokuapps account and the app to respond to calls for mydomain.eu.
-						</div>
-					</div>
-				</div>		
-				<div class="accordion-group">
-	    			<div class="accordion-heading">
 						<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFive">
 						List of closed issues
 						</a>
@@ -359,18 +334,6 @@
 						</div>
 					</div>
 				</div>		
-				<div class="accordion-group">
-	    			<div class="accordion-heading">
-						<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseSix">
-						Howto display total bitcoin donations received?
-						</a>
-					</div>
-					<div id="collapseSix" class="accordion-body collapse">
-						<div class="accordion-inner">
-							figure out API to coinbase, flagging entries, using db, asynchronous transfer, etc.
-						</div>
-					</div>
-				</div>
 				comment end 049 -->
 			</div>
 		</div>
